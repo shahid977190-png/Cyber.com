@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber - Education Technology Hub</title>
+    <style>
+        /* CSS RESET AND BASE STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #ffffff;
+            /* Rocket background image applied here */
+            background-image: linear-gradient(rgba(10, 10, 25, 0.75), rgba(10, 10, 25, 0.85)), url('rocket.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            line-height: 1.6;
+        }
+
+        /* NAVIGATION BAR STYLES */
+        header {
+            background-color: rgba(15, 23, 42, 0.9);
+            border-bottom: 2px solid #00d2ff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .nav-container {
+            width: 85%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .brand-logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* Logo image styling */
+        .brand-logo-area img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid #00d2ff;
+            object-fit: cover;
+        }
+
+        .brand-logo-area h1 {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #00d2ff;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #00d2ff;
+        }
+
+        /* MAIN HERO SECTION */
+        .hero-section {
+            padding: 100px 0 60px 0;
+            text-align: center;
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .hero-section h2 {
+            font-size: 45px;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        .hero-section span {
+            color: #00d2ff;
+        }
+
+        /* MAIN LAYOUT CONTAINER */
+        .main-container {
+            width: 85%;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        /* TOPIC CONTENT CARDS STYLES */
+        .topic-card {
+            background-color: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(0, 210, 255, 0.2);
+            border-radius: 15px;
+            padding: 35px;
+            margin-bottom: 40px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .topic-card:hover {
+            transform: translateY(-5px);
+            border-color: #00d2ff;
+        }
+
+        .topic-card h3 {
+            font-size: 26px;
+            color: #00d2ff;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+        }
+
+        .topic-card p {
+            font-size: 17px;
+            color: #e2e8f0;
+            text-align: justify;
+        }
+
+        /* DEVELOPER PROFILE SPECIFIC STYLES */
+        .profile-badge {
+            display: inline-block;
+            background: rgba(0, 210, 255, 0.1);
+            border: 1px solid #00d2ff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            color: #00d2ff;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .profile-details {
+            margin-top: 15px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .profile-item {
+            background: rgba(15, 23, 42, 0.5);
+            padding: 12px 15px;
+            border-radius: 8px;
+            border-left: 3px solid #00d2ff;
+        }
+
+        .profile-item strong {
+            color: #00d2ff;
+            display: block;
+            font-size: 14px;
+        }
+
+        .profile-item span {
+            color: #ffffff;
+            font-size: 16px;
+        }
+
+        /* CONTACT AND INFO SECTION */
+        .extra-info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .info-box {
+            background-color: rgba(15, 23, 42, 0.8);
+            border-radius: 12px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .info-box h4 {
+            color: #00d2ff;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .info-box ul {
+            list-style-type: square;
+            padding-left: 20px;
+        }
+
+        .info-box ul li {
+            margin-bottom: 10px;
+            color: #cbd5e1;
+        }
+
+        /* FORM FIELD STYLES */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            background-color: rgba(30, 41, 59, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
+            color: #fff;
+            font-size: 14px;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #00d2ff;
+        }
+
+        button {
+            background-color: #00d2ff;
+            color: #0f172a;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #00a8cc;
+        }
+
+        /* FOOTER STYLES */
+        footer {
+            background-color: #0f172a;
+            text-align: center;
+            padding: 25px 0;
+            margin-top: 60px;
+            border-top: 2px solid #00d2ff;
+            font-size: 14px;
+            color: #94a3b8;
+        }
+
+        /* SCROLLBAR STYLES */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #00d2ff;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <div class="brand-logo-area">
+                <img src="logo.jpg" alt="Cyber Hub Logo">
+                <h1>Cyber</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#about-dev">Developer</a></li>
+                    <li><a href="#edtech">EdTech</a></li>
+                    <li><a href="#computer">Computer</a></li>
+                    <li><a href="#cyber-meaning">Cyber Space</a></li>
+                    <li><a href="#ai">AI Tech</a></li>
+                    <li><a href="#cloud">Cloud Storage</a></li>
+                    <li><a href="#cyber-threats">Cyber Threats</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <h2>Welcome to the <span>Cyber Knowledge Hub</span></h2>
+        <p>Exploring the wonderful world of modern computers, internet technology, and smart education spaces.</p>
+    </section>
+
+    <main class="main-container">
+
+        <!-- NEW TOPIC 1: MERE INTRODUCTION (ABOUT THE DEVELOPER) -->
+        <section id="about-dev" class="topic-card">
+            <div class="profile-badge">Project Developer</div>
+            <h3>About the Developer</h3>
+            <p>
+                This website is conceptualized and built as a computer science presentation tool to explore modern web development, network architecture, and security protocols.
+            </p>
+            <div class="profile-details">
+                <div class="profile-item">
+                    <strong>Name</strong>
+                    <span>Shahid Alam</span>
+                </div>
+                <div class="profile-item">
+                    <strong>Class</strong>
+                    <span>8th Standard</span>
+                </div>
+                <div class="profile-item">
+                    <strong>School</strong>
+                    <span>Pride International School</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="edtech" class="topic-card">
+            <h3>Education Technology</h3>
+            <p>
+                Educational Technology, commonly known as EdTech, refers to the systematic use of hardware, software, and digital tools to enhance teaching and learning experiences. It transforms traditional classrooms into highly interactive spaces, allowing students to access information globally, collaborate easily with peers, and learn at their own comfortable pace through modern digital pathways.
+            </p>
+        </section>
+
+        <section id="computer" class="topic-card">
+            <h3>Computer Systems</h3>
+            <p>
+                A computer is an advanced electronic device that takes raw data as input from the user and processes it under the strict control of a set of instructions called a program. It produces the desired output and saves it for future use, making complex mathematical calculations and daily school assignments extremely fast, organized, and remarkably accurate.
+            </p>
+        </section>
+
+        <section id="cyber-meaning" class="topic-card">
+            <h3>Cyber Meaning</h3>
+            <p>
+                Cyber means you know anything related to computers, information technology, virtual networks, and the massive global internet platform. It represents the vast digital space where data travels instantly across the entire world, connecting millions of smart devices, online databases, and dynamic websites together, which forms the core foundation of our modern connected lifestyle.
+            </p>
+        </section>
+
+        <section id="ai" class="topic-card">
+            <h3>Artificial Intelligence (AI)</h3>
+            <p>
+                Artificial Intelligence is a fascinating branch of computer science that focuses on creating smart machines capable of performing tasks that typically require human intelligence. This includes learning from deep data patterns, making independent decisions, recognizing speech expressions, solving complex logical problems, and adapting to new digital datasets without manual programming.
+            </p>
+        </section>
+
+        <section id="cloud" class="topic-card">
+            <h3>Cloud Computing</h3>
+            <p>
+                Cloud computing is the on-demand delivery of computing services over the internet, including data storage systems, servers, remote databases, networking tools, and advanced software suites. Instead of keeping files on a local physical hard drive, it allows users to access their important applications and documents securely from absolutely anywhere across the globe.
+            </p>
+        </section>
+
+        <!-- NEW TOPIC 2: CYBER CRIMES & THREATS -->
+        <section id="cyber-threats" class="topic-card">
+            <h3>Cyber Crimes & Threats</h3>
+            <p>
+                As the digital world expands, digital risks also increase. Cyber crime involves any illegal activity done using a computer, network, or hardware device. Common threats include malware (harmful viruses), phishing (fake links used to steal credentials), and hacking. Understanding these digital threats helps internet users shield their personal profiles and system storage from bad networks globally.
+            </p>
+        </section>
+
+        <div class="extra-info-grid">
+            
+            <div class="info-box">
+                <h4>Cyber Security Safety Rules</h4>
+                <ul>
+                    <li>Always use strong, unique passwords for accounts.</li>
+                    <li>Never share your personal information with strangers online.</li>
+                    <li>Do not click on suspicious links or pop-up ads.</li>
+                    <li>Keep your antivirus and computer software updated regularly.</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <h4>Submit Project Feedback</h4>
+                <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Thank you for your feedback!');">
+                    <input type="text" placeholder="Enter Your Full Name" required>
+                    <input type="email" placeholder="Enter Your Email Address" required>
+                    <textarea rows="3" placeholder="Write your comments about this computer project here..." required></textarea>
+                    <button type="submit">Submit Details</button>
+                </form>
+            </div>
+
+        </div>
+
+    </main>
+    <footer>
+        <p>&copy; 2026 Cyber Project Hub. Built for Computer Science Academic Presentation.</p>
+        <p>Designed with HTML & CSS using rocket.jpg background and logo.jpg element.</p>
+    </footer>
+</body>
+</html>
